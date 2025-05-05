@@ -10,14 +10,15 @@
 	<script>
 		function secondHighest(arr) {
 			//Write your code here
-			 arr = arr.map(Number);
-
-    // Handle edge cases
-    if (arr.length < 2 || arr.every(val => val === arr[0])) {
-        return "-Infinity";
-    }
-
-     let max = -Infinity;
+			
+			let len= arr.length;
+			if(len==0 || len==1 || arr.every(val => val === arr[0]))
+			{
+				return "-Infinity";
+			}
+			else 
+			{
+				let max = -Infinity;
     let second = -Infinity;
 
     for (let num of arr) {
@@ -25,21 +26,19 @@
             second = max;
             max = num;
         } else if (num < max && num > second) {
-            second = num;
+            second = num;  
         }
     }
 
-    if (second === -Infinity) {
-        // All elements are the same
-        return max;
-    }
-
-    return second;
+    // If all elements are the same, second will still be -Infinity
+    return second === -Infinity ? max : second;
+			}
+			
 			
 		}
 
 		function Main() {
-			// var n = prompt("Enter the number of elements"); 
+			var n = prompt("Enter the number of elements"); 
 			var arr = [];
 			for (var i = 0; i < n; i++) {
 				arr[i] = prompt("Enter element " + (i+1));
