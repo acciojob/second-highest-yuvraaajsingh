@@ -10,23 +10,31 @@
 	<script>
 		function secondHighest(arr) {
 			//Write your code here
-			
-			let len= arr.length;
-			if(len==0 || len==1 || arr.every(val => val === arr[0]))
-			{
-				return "-Infinity";
-			}
-			else 
-			{
-				arr.sort();
-				return arr[len-2];
-			}
-			
+			 arr = arr.map(Number);
+
+    // Handle edge cases
+    if (arr.length < 2 || arr.every(val => val === arr[0])) {
+        return "-Infinity";
+    }
+
+    let max = -Infinity;
+    let second = -Infinity;
+
+    for (let num of arr) {
+        if (num > max) {
+            second = max;
+            max = num;
+        } else if (num < max && num > second) {
+            second = num;
+        }
+    }
+
+    return second === -Infinity ? "-Infinity" : second;
 			
 		}
 
 		function Main() {
-			var n = prompt("Enter the number of elements"); 
+			// var n = prompt("Enter the number of elements"); 
 			var arr = [];
 			for (var i = 0; i < n; i++) {
 				arr[i] = prompt("Enter element " + (i+1));
