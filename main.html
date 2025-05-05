@@ -17,7 +17,7 @@
         return "-Infinity";
     }
 
-    let max = -Infinity;
+     let max = -Infinity;
     let second = -Infinity;
 
     for (let num of arr) {
@@ -29,7 +29,12 @@
         }
     }
 
-    return second === -Infinity ? "-Infinity" : second;
+    if (second === -Infinity) {
+        // All elements are the same
+        return max;
+    }
+
+    return second;
 			
 		}
 
